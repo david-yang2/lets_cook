@@ -11,6 +11,8 @@ class Menu < ApplicationRecord
   #dn checks to see if the label is valid
   validate :check_label
 
+
+  has_many :dishes
   def check_label
     #dn if label is not one of the options in the array, throw an error
     unless ["breakfast", "lunch", "dinner"].include? self.label
