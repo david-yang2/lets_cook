@@ -4,7 +4,7 @@ class CreateMenus < ActiveRecord::Migration[6.0]
       #dn t.(specify datatype)
       #dn :label would be either breakfast, lunch or dinner
       #dn null: false -> forces an entry, so every menu has to have a label
-      t.string :label, null: false
+      t.string :chefs_name, null: false
     end
   end
 end

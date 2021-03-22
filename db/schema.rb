@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_211041) do
     #dn no ID column for the primary key
       #dn rails does this for us, so it's not printed out
     #dn there's a column named "label"
-    t.string "label", null: false
+    t.string "chefs_name", null: false
   end
 
 end
