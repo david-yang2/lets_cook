@@ -94,7 +94,7 @@ class MenusController < ApplicationController
     redirect_to menus_url
   end
 
-  private
+  protected
   def menu_params
     #dn typically used in create and update
     #dn if you create an object, you should be able to update the same parameters

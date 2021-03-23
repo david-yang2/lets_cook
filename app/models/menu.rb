@@ -7,7 +7,7 @@ class Menu < ActiveRecord::Base
   #dn instead of throwing a long error message from SQL when input label is incorrect
     #dn the error will come from our model which is a lot shorter
   validates :chefs_name, presence: true
-  has_many :dishes
+  has_many :items
 
   # #dn checks to see if the label is valid
   # validate :check_label

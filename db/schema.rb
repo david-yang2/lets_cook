@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_211041) do
+ActiveRecord::Schema.define(version: 2021_03_23_000606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  #dn there's a table called menus
+  create_table "items", force: :cascade do |t|
+    t.integer "menu_id", null: false
+    t.string "name", null: false
+    t.text "ingredients", null: false
+  end
+
   create_table "menus", force: :cascade do |t|
-    #dn no ID column for the primary key
-      #dn rails does this for us, so it's not printed out
-    #dn there's a column named "label"
-    t.string "chefs_name", null: false
+    t.string "label", null: false
   end
 
 end
