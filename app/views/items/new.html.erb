@@ -1,0 +1,27 @@
+<h1> <%= @menu.chefs_name %>'s New Item </h1>
+
+<form action='/items' method = 'POST'>
+  <input type="hidden" name='item[menu_id]' value='<%= @menu.id%>'>
+
+  <label for='item_name'>Name</label>
+  <input type='text'
+        name='item[name]'
+        id="item_name"
+        value='<%= @item.name %>'>
+
+  <br>
+
+
+<!-- select -> gives user the values so they dont mispell one of the validations -->
+
+  <label for="item_dish_type">Dish_type</label>
+  <select name="item[dish_type]" id="item_dish_type">
+    <!-- these are the options, values chosen will be passed to item[dish_type] -->
+    <option value = "Appetizer">Appetizer</option>
+    <option value = "Main Course">Main Course</option>
+    <option value = "Dessert">Dessert</option>
+  </select>
+
+  <input type="submit" value="Create Item!">
+
+</form>

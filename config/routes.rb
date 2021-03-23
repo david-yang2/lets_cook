@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     #dn these are the routes you want to be nested under menus
       #dn e.g. /menus/:menus_id/items
-    resources :items, only: [:index]
+    resources :items, only: [:index, :new]
   end
 
   #dn make some top level resources for items

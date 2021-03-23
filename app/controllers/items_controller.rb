@@ -1,4 +1,4 @@
-class ItemsController << ApplicationController
+class ItemsController < ApplicationController
 
   def index
     #dn /menu/:menu_id/items
@@ -37,6 +37,7 @@ class ItemsController << ApplicationController
     end
 
   end
+
   def create
     item = Item.new(self.item_params)
 
@@ -47,9 +48,16 @@ class ItemsController << ApplicationController
     end
   end
 
+  def new
+    @menu = Menu.find(params[:menu_id])
+    @item = Item.new
+    render :new
+
+  end
+
   protected
   def item_params
-    self.params[:item].permit(:menu_id, :name, :ingredients)
+    self.params[:item].permit(:menu_id, :name, :ingredients, :dish_type)
   end
 
 end
