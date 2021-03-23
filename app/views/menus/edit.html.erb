@@ -1,1 +1,47 @@
-<h1> this is the edit page</h1>
+<h1> Update <%= @menu.chefs_name%>'s Menu!</h1>
+
+
+<!-- renders a partial -->
+<%= render "form", menu: @menu %>
+
+
+
+
+
+<!-- code below used for understanding the structure only -->
+
+<% if false %>
+<!-- commented out begin -->
+The Following code is similar to edit.html.erb, not DRY, so we will
+      use _form.html.erb
+
+code below will be ignored but used for reference:
+
+<!-- going to make a POST request; however it should be a PATCH-->
+<form action="<%=menu_url(@menu)%>" method="POST">
+
+<!-- since we can't make a PATCH request, we make a hidden field -->
+  <input type='hidden' name='_method' value="PATCH">
+
+  <!-- creates new text field where you can input attributes for our menu-->
+  <!-- make labels for your text boxes, so users know what they're entering-->
+  <label for="chefs_name">Name</label>
+  <input type="text"
+          name='menu[chefs_name]'
+          id="chefs_name"
+          value="<%= @menu.chefs_name%>">
+  <br>
+
+  <label for="menu_location">Store Location</label>
+  <input type='text'
+          name='menu[location]'
+          id="menu_location"
+          value="<%= @menu.location%>">
+  <br>
+
+
+  <!-- creates new submit button labled "Create your menu" -->
+  <input type="submit" value = "Update your menu!" >
+</form>
+<!-- commented out end -->
+<%end%>

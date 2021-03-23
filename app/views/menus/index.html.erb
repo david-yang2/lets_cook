@@ -1,7 +1,9 @@
-<h1>This is all the Chefs</h1>
+<h1>Which Chef would you like to choose from today?</h1>
 
 <ul>
   <% @menus.each do |m| %>
-    <li><%= m.chefs_name%> </li>
+    <li>
+        <a href="<%= menu_url(m)%>"><%= m.chefs_name%></a>
+    </li>
   <% end %>
 </ul>

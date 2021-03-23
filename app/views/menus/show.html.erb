@@ -1,1 +1,13 @@
-<h1> this is the show page</h1>
+<h1> This is <%= @menu.chefs_name%>'s Full Menu </h1>
+
+<ul>
+  <% @menu.items.each do |item| %>
+    <li><%= item.name %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <li><a href="<%= new_menu_url(@menu) %>">New Menu</a></li>
+  <li><a href="<%= edit_menu_url(@menu) %>">Edit <%= @menu.chefs_name%>'s Menu</a></li>
+  <li><a href="<%= menus_url %>">Index</a></li>
+</ul>

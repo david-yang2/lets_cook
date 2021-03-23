@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :menus do
@@ -13,4 +15,9 @@ Rails.application.routes.draw do
   #dn when you are creating, showing, updating, destory a SINGLE item,
     #dn it makes more sense that is on the top-level
   resources :items, only: [:create, :show, :update, :destory]
+
+
+  #dn instead of the default Rails page, redirect us /menus
+  #dn essentiall changing the root too /menus
+  root to: redirect("/menus")
 end

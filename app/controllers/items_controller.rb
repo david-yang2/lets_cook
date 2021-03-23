@@ -33,18 +33,29 @@ class ItemsController < ApplicationController
     if success
       render json: item
     else
-      render json: toy.errors.full_messages, status: :unprocessable_entity
+      render json: item.errors.full_messages, status: :unprocessable_entity
     end
 
   end
 
   def create
-    item = Item.new(self.item_params)
+    @item = Item.new(self.item_params)
 
-    if item.save
-      render json: item
+    #dn can do this because there's an association between them
+      #dn can't do @menu = params[:menu_id] eventhough we are in /menus/:menu_id/items/new
+        #dn since it POST to /items -> top level resource
+      #dn menu_id actually lives in the item parameter
+        #dn -> @item.menu == Menu.find(params[:item][:menu_id])
+
+    @menu = @item.menu
+
+    if @item.save
+
+      #dn redirect to /menus/:menu_id
+      redirect_to menu_url(@menu)
     else
-      render json: toy.errors.full_messages, status: :unprocessable_entity
+      render :new
+      #render json: item.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -52,7 +63,6 @@ class ItemsController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @item = Item.new
     render :new
-
   end
 
   protected

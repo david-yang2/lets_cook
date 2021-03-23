@@ -67,10 +67,14 @@ class MenusController < ApplicationController
     end
   end
 
+  #dn 1. find the menu
   def edit
 
     #dn /menus/:id/edit
     #dn show a form to edit an existing object
+
+    @menu = Menu.find(params[:id])
+    render :edit
   end
 
   def show
@@ -92,7 +96,15 @@ class MenusController < ApplicationController
 
     #dn update with the given hash, but only the ones we permit
     #dn anything else will be ignored
-    menu.update(self.menu_params)
+    #dn if that works:
+    if @menu.update(self.menu_params)
+      #redirect to /menus/:menu_id
+      redirect_to menu_url(@menu)
+    else
+
+      #dn or ellse, render the edit page again so user can try to update again
+      render :edit
+    end
   end
 
   #dn Destroy action

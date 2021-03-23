@@ -1,5 +1,20 @@
 <h1> Please Create Your Menu! </h1>
 
+<!-- renders a partial -->
+<%= render "form", menu: @menu %>
+
+
+
+
+<!-- code below used for understanding the structure only -->
+
+<% if false %>
+<!-- commented out begin -->
+The Following code is similar to edit.html.erb, not DRY, so we will
+      use _form.html.erb
+
+code below will be ignored but used for reference:
+
 <form action='/menus' method="POST">
 
   <!-- creates new text field where you can input attributes for our menu-->
@@ -21,4 +36,5 @@
 
   <!-- creates new submit button labled "Create your menu" -->
   <input type="submit" value = "Create your menu!" >
-</form>
+<!-- commented out end -->
+<%end%>
