@@ -1,7 +1,23 @@
+<h1> Please Create Your Menu! </h1>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <form action='/menus' method="POST">
 
-  <!-- creates new text field -->
-  <input type="text">
+  <!-- creates new text field where you can input attributes for our menu-->
+  <!-- make labels for your text boxes, so users know what they're entering-->
+  <label for="chefs_name">Name</label>
+  <input type="text"
+          name='menu[chefs_name]'
+          id="chefs_name"
+          value="<%= @menu.chefs_name%>">
+  <br>
+
+  <label for="menu_location">Store Location</label>
+  <input type='text'
+          name='menu[location]'
+          id="menu_location"
+          value="<%= @menu.location%>">
+  <br>
+
 
   <!-- creates new submit button labled "Create your menu" -->
   <input type="submit" value = "Create your menu!" >

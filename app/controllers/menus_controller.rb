@@ -6,7 +6,7 @@ class MenusController < ApplicationController
     #dn GET /menus
     #dn create instance variables in the controller, so it can be used in views files
     #dn remember local variables, regular menu, will not be accessible in the views
-    @menu = Menu.all
+    @menus = Menu.all
 
     #dn when the router calls the index action/method, send it back index.html.erb
     #dn rails knows the symbol index (:index) refers to menus/index.html.erb
@@ -26,10 +26,18 @@ class MenusController < ApplicationController
   def new
     #dn /menus/new
     #dn show a form to create a new object
-
+      #dn think of it as a proxy, so that we can use menu attributes ->
+        #dn @menu.chefs_name,@menu.location in the form file
+    @menu = Menu.new
     render :new
 
   end
+
+  #dn 1. GET Request for blank /menu/new form
+  #dn 2. POST to /cats
+  #dn 3. Validation fails
+  #dn 4. Server render new template again
+  #dn 5. The form is filled in wioth @menu data
 
   def create
 
@@ -39,13 +47,24 @@ class MenusController < ApplicationController
     @menu = Menu.new(self.menu_params)
 
     if @menu.save
-      render json: menu
+      #dn menu_url is a url helper method
+      #dn menu_url == http://localhost:3000/menus
+      #dn so menu_url(@menu) == /menus/:id -> id of cat that was just created
+        #dn => hits the show.html.erb
+
+      redirect_to menu_url(@menu)
     else
-      #dn gives the user a nice message of what went wrong
-      render json: menu.errors.full_messages, status: unprocssable_entity
+      #dn if it doesn't save, it gives the user another chance to create a menu
+        #dn by rendering the page again
+      #dn you can redirect_to new_menu_url, however, all the values from the user will be lost
+        #dn by rendering, you're allowing the user to save the inforatmion they inputted
+        #dn and put it back into the form in new.html.erb so they can attempt to create again
+      render :new
+
+
+      # #dn gives the user a nice message of what went wrong
+      # render json: @menu.errors.full_messages, status: :unprocssable_entity
     end
-
-
   end
 
   def edit
@@ -89,9 +108,7 @@ class MenusController < ApplicationController
     menu.destroy
 
     #dn once deleted redirect to menu index
-    #dn menus_url is a url helper method
-    #dn menus_url == http://localhost:3000/menus
-    redirect_to menus_url
+    redirect_to menu_url
   end
 
   protected
@@ -102,7 +119,7 @@ class MenusController < ApplicationController
     #dn params[:menu] receive what ever hash that was passed in
     #dn .permit will only permit the attributes in the () when creating/updating
     #dn anything else will be ignored
-    self.params[:menu].permit(:chefs_name)
+    self.params[:menu].permit(:chefs_name, :location)
   end
 
 

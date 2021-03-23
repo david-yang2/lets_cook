@@ -14,4 +14,7 @@ All other controllers inherit from ApplicationController
 class ApplicationController < ActionController::Base
   #dn if you set a filter here, it will run on every controller in your application
   #dn  provides our controllers with handy methods
+
+
+  protect_from_forgery with: :null_session
 end
