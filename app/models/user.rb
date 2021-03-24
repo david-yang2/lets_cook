@@ -9,6 +9,11 @@ class User < ApplicationRecord
     end
 
     def is_password?(password)
+
+        #dn b/c the digest is already hashed
+            #dn use .new rather than .create
+                #dn .create creates a Password object by hashing the input
+                #dn .new builds a Password object from an existing, string-ified hash
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
 
