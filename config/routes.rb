@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :items, only: [:create, :show, :update, :destory]
 
   resources :users
+  resources :session
 
 
   #dn instead of the default Rails page, redirect us /menus
