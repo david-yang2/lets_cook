@@ -1,4 +1,7 @@
 <!--
+
+Generally use form partials when 2 or more files are really similar.
+
 Notice how similar the new.html.erb and edit.html.erb was
 
 The only things that were different:
@@ -8,7 +11,7 @@ The only things that were different:
 
 we want to keep things DRY so we can use a form partial file
 
-Think of the template as a "method" and you're passing in arguments
+Think of form partials,the template, as a "method" and you're passing in arguments
 
 few things to note:
   - persisted? -> has this been saved to the data base before?
@@ -63,5 +66,5 @@ few things to note:
 
 
   <!-- creates new submit button labled "Create your menu" -->
-  <input type="submit" value = "<%= submit_text %>" >
+  <input type="submit" value = "<%= submit_text %>">
 </form>
