@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   resources :items, only: [:create, :show, :update, :destory]
 
   resources :users
-  resources :sessions
+
+
+  #dn no Session model class, nor sessions table
+#dn session resource is singular because the user will only use at most one session: their own
+  resources :session
 
 
   #dn instead of the default Rails page, redirect us /menus
