@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     #dn it makes more sense that is on the top-level
   resources :items, only: [:create, :show, :update, :destory]
 
+  resources :users
+
 
   #dn instead of the default Rails page, redirect us /menus
   #dn essentiall changing the root too /menus

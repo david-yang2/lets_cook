@@ -3,7 +3,7 @@ class User < ApplicationRecord
     #dn validation will call this to check the attribute
     attr_reader :password
 
-    validates :username, presences: true
+    validates :username, presence: true
 
     #if password is bank send that message
     validates :password_digest, presence: { message: 'Password can\'t be blank'}
