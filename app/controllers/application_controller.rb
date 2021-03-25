@@ -16,30 +16,30 @@ class ApplicationController < ActionController::Base
   #dn  provides our controllers with handy methods
 
 
-  #dn helper_method allows us to use the methods through out any view pages
-  #dn make current_user available in all views
-  helper_method :current_user
+  # #dn helper_method allows us to use the methods through out any view pages
+  # #dn make current_user available in all views
+  # helper_method :current_user
 
-  def login!(user)
-    @current_user = user
-    session[:session_token] = user.session_token
-  end
+  # def login!(user)
+  #   @current_user = user
+  #   session[:session_token] = user.session_token
+  # end
 
-  def current_user
-    return nil if session[:session_token].nil?
-    @current_user ||= User.find_by(session_token: session[:session_token])
-  end
+  # def current_user
+  #   return nil if session[:session_token].nil?
+  #   @current_user ||= User.find_by(session_token: session[:session_token])
+  # end
 
-  def require_current_user!
-    redirect_to new_session_url if current_user.nil?
-  end
+  # def require_current_user!
+  #   redirect_to new_session_url if current_user.nil?
+  # end
 
-  def logout!
+  # def logout!
 
-    #dn reset the session token at log out, invalidating old session token
-    current_user.try(:reset_session_token!)
-    session[:session_token] = nil
-  end
+  #   #dn reset the session token at log out, invalidating old session token
+  #   current_user.try(:reset_session_token!)
+  #   session[:session_token] = nil
+  # end
 
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
 end
