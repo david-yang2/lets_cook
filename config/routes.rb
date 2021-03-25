@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   #dn no Session model class, nor sessions table
   #dn session resource is singular because the user will only use at most one session: their own
-  resource :session
+  resource :session, only: [:create, :destroy]
 
 
   #dn instead of the default Rails page, redirect us /menus
