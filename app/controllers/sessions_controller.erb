@@ -17,6 +17,11 @@ class SessionsController < ApplicationController
             render json: "Welcome back #{user.username}!"
         end
     end
+
+    def destory
+        logout!
+        redirect_to new_session_url
+    end
   
     def new
     end

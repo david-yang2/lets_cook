@@ -31,5 +31,12 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def logout!
+
+    #dn reset the session token at log out, invalidating old session token
+    current_user.try(:reset_session_token!)
+    session[:session_token] = nil
+  end
+
   # protect_from_forgery with: :null_session
 end
