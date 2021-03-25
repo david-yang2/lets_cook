@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+    #dn :create and :new are needed before a user is signed up, so
+    #dn there's no way for them to be logged in at that point
+    before_action :require_current_user!, except: [:create, :new]
+    
     def create
         @user = User.new(user_params)
 
