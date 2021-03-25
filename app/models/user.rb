@@ -14,20 +14,22 @@ class User < ApplicationRecord
             #dn @password attribute is only set IF WE CHANGE THE PASSWORD WITH #password=)
     validates :password, length: {minimum: 6, allow_nil:true}
 
-    # validates :session_token, presence: true
-    # after_initialize :ensure_session_token
+    validates :session_token, presence: true
+
+    #dn generate a session token for User if one isn't already set
+    after_initialize :ensure_session_token
 
 
-    # def self.generate_session_token
-    #     SecureRandom::urlsafe_base64(16)
-    # end
+    def self.generate_session_token
+        SecureRandom::urlsafe_base64(16)
+    end
 
 
-    # def reset_session_token!
-    # self.session_token = self.class.generate_session_token
-    # self.save!
-    # self.session_token
-    # end
+    def reset_session_token!
+        self.session_token = self.class.generate_session_token
+        self.save!
+        self.session_token
+    end
 
     
 
@@ -52,11 +54,15 @@ class User < ApplicationRecord
         BCrypt::Password.new(self.password_digest).is_password?(password)
     end
     
-    # private
-    # def ensure_session_token
-    #   # we must be sure to use the ||= operator instead of = or ||, otherwise
-    #   # we will end up with a new session token every time we create
-    #   # a new instance of the User class. This includes finding it in the DB!
-    #   self.session_token ||= self.class.generate_session_token
-    # end
+    private
+    def ensure_session_token
+      # we must be sure to use the ||= operator instead of = or ||, otherwise
+      # we will end up with a new session token every time we create
+      # a new instance of the User class. This includes finding it in the DB!
+
+      #dn stores session token in the User
+      #dn if self.session_token has no value, generate a session_token and make that the value
+      #dn if it has a value already, use the pre-existing value
+      self.session_token ||= self.class.generate_session_token
+    end
 end

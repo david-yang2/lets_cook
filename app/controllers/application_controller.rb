@@ -16,5 +16,20 @@ class ApplicationController < ActionController::Base
   #dn  provides our controllers with handy methods
 
 
-  protect_from_forgery with: :null_session
+  #dn helper_method allows us to use the methods through out any view pages
+  #dn make current_user available in all views
+  helper_method :current_user
+
+  def login!(user)
+    @current_user = user
+    session[:session_token] = user.session_token
+  end
+
+  def current_user
+    return nil if session[:session_token].nil?
+    @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+
+  # protect_from_forgery with: :null_session
 end
