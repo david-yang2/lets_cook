@@ -14,14 +14,13 @@ Rails.application.routes.draw do
     #dn these actions will work with /items/:id
   #dn when you are creating, showing, updating, destory a SINGLE item,
     #dn it makes more sense that is on the top-level
-  resources :items, only: [:create, :show, :update, :destory]
+  resources :items, only: [:create, :show, :update, :destory, :edit]
 
   resources :users
 
-
   #dn no Session model class, nor sessions table
-#dn session resource is singular because the user will only use at most one session: their own
-  resources :session
+  #dn session resource is singular because the user will only use at most one session: their own
+  resource :session
 
 
   #dn instead of the default Rails page, redirect us /menus

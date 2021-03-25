@@ -1,6 +1,6 @@
 #dn in this file will be our ruby code on how to process the requests
 class MenusController < ApplicationController
-
+  # before_action :require_current_user!
 
   def index
     #dn GET /menus
