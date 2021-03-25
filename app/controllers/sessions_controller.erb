@@ -11,6 +11,9 @@ class SessionsController < ApplicationController
         if user.nil?
             render json: 'Credentials were wrong'
         else
+            #dn since SessionsController inherits from ApplicationController
+            #dn we can use any methods defined in ApplicationController
+            login!(user)
             render json: "Welcome back #{user.username}!"
         end
     end

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
+            #dn login! inherited from ApplicationController
+            login!(@user)
             render json: @user
         else 
             render json: @user.errors.full_messages
@@ -15,10 +17,15 @@ class UsersController < ApplicationController
     end
 
     def self.find_by_credentials(username,password)
+
+        #dn this will only return if username/password is correct
+
         user = User.find_by(username: username)
         return nil if user.nil?
         user.is_password?(password) ? user : nil
     end
+
+
     private
 
     def user_params
