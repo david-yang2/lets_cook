@@ -11,7 +11,7 @@
 
   <body>
 
-
+  <% if false %>
   <% if !current_user.nil? %>
   <ul>
     <li>Logged in as: <%= current_user.username %></li>
@@ -26,6 +26,7 @@
     </li>
   </ul>
   <% end %>
+  <%end %>
 
 
 

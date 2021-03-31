@@ -47,24 +47,33 @@ class MenusController < ApplicationController
     @menu = Menu.new(self.menu_params)
 
     if @menu.save
-      #dn menu_url is a url helper method
-      #dn menu_url == http://localhost:3000/menus
-      #dn so menu_url(@menu) == /menus/:id -> id of cat that was just created
-        #dn => hits the show.html.erb
-
-      redirect_to menu_url(@menu)
-    else
-      #dn if it doesn't save, it gives the user another chance to create a menu
-        #dn by rendering the page again
-      #dn you can redirect_to new_menu_url, however, all the values from the user will be lost
-        #dn by rendering, you're allowing the user to save the inforatmion they inputted
-        #dn and put it back into the form in new.html.erb so they can attempt to create again
-      render :new
-
-
-      # #dn gives the user a nice message of what went wrong
-      # render json: @menu.errors.full_messages, status: :unprocssable_entity
+      respond_to |format|
+        format.html { redirect_to menu_url(@menu) }
+        format.json { render json: menu }
     end
+
+    ## dn start -> old template for html views
+    # if @menu.save
+    #   #dn menu_url is a url helper method
+    #   #dn menu_url == http://localhost:3000/menus
+    #   #dn so menu_url(@menu) == /menus/:id -> id of cat that was just created
+    #     #dn => hits the show.html.erb
+
+    #   redirect_to menu_url(@menu)
+    # else
+    #   #dn if it doesn't save, it gives the user another chance to create a menu
+    #     #dn by rendering the page again
+    #   #dn you can redirect_to new_menu_url, however, all the values from the user will be lost
+    #     #dn by rendering, you're allowing the user to save the inforatmion they inputted
+    #     #dn and put it back into the form in new.html.erb so they can attempt to create again
+    #   render :new
+
+
+    #   # #dn gives the user a nice message of what went wrong
+    #   # render json: @menu.errors.full_messages, status: :unprocssable_entity
+    # end 
+    ## dn end
+
   end
 
   #dn 1. find the menu
