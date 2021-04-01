@@ -2,11 +2,33 @@
 <h1>Which Chef would you like to choose from today?</h1>
 
 <div class="chefs">
-  <ul>
+  <ul id="chef_list">
     <% @menus.each do |m| %>
       <li>
-          <a href="<%= menu_url(m)%>"><%= m.chefs_name%></a>
+          <a href="<%= menu_url(m)%>"><%= m.chefs_name%></a> : <%= m.location%>
       </li>
     <% end %>
   </ul>
+
+          <% if false %>
+          combine create with index?
+          <% end %>
+
+
+  <form action="/menus" method="POST">
+    <label for="chefs_name">Name</label>
+    <input type="text"
+            name='menu[chefs_name]'
+            id="chefs_name"
+            value="">
+    <br>
+
+    <label for="menu_location">Store Location</label>
+    <input type='text'
+            name='menu[location]'
+            id="menu_location"
+            value="">
+    <br>
+    <input type="submit" value = "Create New Menu">
+  </form>
 </div>
