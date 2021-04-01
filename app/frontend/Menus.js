@@ -49,13 +49,27 @@
                 // execute this function
                 // 200 for success
                 // 400 for failure
-            success: function() {
-                alert("hooray it worked");
-            }
+            success: function(menu) {
+                this.addMenu(menu);
+                this.clearForm();
 
-
+            // remember to bind or else this. will refer to the global variable
+            }.bind(this)
         })
     }
     
+    const addMenu = (message) => {
+        // this should add the inputs to the list
+        var $menu = $("<li>").text(menu.chefs_name + ": " + menu.location):
+        this.$menus.append($menu);
+    }
+
+    const clearForm() => {
+        // set the values of type="text" to empty string
+        // make sure to specificy the type
+            // if you just leave it as input
+                // you will clear the value for the submit button as well
+        this.$form.find("input[type="text"]").val("");
+    }
     
     export default MenusJs;
