@@ -11,18 +11,20 @@ class MenuIndex extends React.Component{
     render() {
         const {menus, deleteMenu} = this.props;
 
-        return {
+        return (
             <div>
                 <ul>
+                    {
                     menus.map(menu => <MenuIndexItem
-                                        menu = {menu}
-                                        deleteMenu = {deleteMenu}
-                                        key={menu.id})
+                                        menu={menu}
+                                        deleteMenu={deleteMenu}
+                                        key={menu.id}
                                         />
+                            )   
+                    }
                 </ul>
             </div>
-        };
+        );
     }
 }
-
 export default MenuIndex;
