@@ -40,7 +40,7 @@ class Api::MenusController < ApplicationController
 
   private
   def menu_params
-    self.params[:menu].permit(:chefs_name, :location)
+    self.params.require[:menu].permit(:chefs_name, :location)
   end
 end
 
