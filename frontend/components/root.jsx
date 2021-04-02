@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
 import App from './app';
-import MenuIndexContainer from './posts/menu_index_container';
-import MenuShowContainer from './posts/menu_show_container';
+import MenuIndexContainer from './menus/menu_index_container';
+import MenuShowContainer from './menus/menu_show_container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
