@@ -12,14 +12,14 @@ const MenuReducer = (oldstate, action) =>{
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
-        case: RECEIVE_ALL_MENUS:
+        case RECEIVE_ALL_MENUS:
             return action.menus;
 
-        case: RECEIVE_MENU:
+        case RECEIVE_MENU:
             nextState[action.menu.id = action.post];
             return nextState;
 
-        case: REMOVE_MENU:
+        case REMOVE_MENU:
             delete nextState(action.id);
             return nextState;
         default:
