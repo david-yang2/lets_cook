@@ -20,11 +20,8 @@ class Api::MenusController < ApplicationController
     end
   end
 
-
-
   def update
     @menu = Menu.find(params[:id])
-
     if @menu.update(self.menu_params)
       render :show
     else
@@ -34,20 +31,16 @@ class Api::MenusController < ApplicationController
 
   def destroy
     @menu = Menu.find(params[:id])
-
     if @menu.destory
       render :show
     else 
       render json: @post.errors.full_messages, status: 422
-
   end
 
   private
   def menu_params
     self.params[:menu].permit(:chefs_name, :location)
   end
-
-
 end
 
 

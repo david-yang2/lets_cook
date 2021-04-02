@@ -1,4 +1,5 @@
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <h1>Which Chef would you like to choose from today?</h1>
 
 <div class="chefs">
@@ -10,9 +11,7 @@
     <% end %>
   </ul>
 
-          <% if false %>
-          combine create with index?
-          <% end %>
+
 
 
   <form action="/menus" method="POST">
@@ -20,15 +19,15 @@
     <input type="text"
             name='menu[chefs_name]'
             id="chefs_name"
-            value="">
+            value=""/>
     <br>
 
     <label for="menu_location">Store Location</label>
     <input type='text'
             name='menu[location]'
             id="menu_location"
-            value="">
+            value=""/>
     <br>
-    <input type="submit" value = "Create New Menu">
+    <input type="submit" name="" id="" value="Create New Menu"/>
   </form>
 </div>
