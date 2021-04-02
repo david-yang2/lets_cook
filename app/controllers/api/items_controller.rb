@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class API::ItemsController < ApplicationController
 
   def index
     #dn /menu/:menu_id/items
@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
     render :new
   end
 
-  protected
+  private
   def item_params
     self.params[:item].permit(:menu_id, :name, :ingredients, :dish_type)
   end
