@@ -1,11 +1,11 @@
 export const fetchMenus = () => {
     return $.ajax({
-        url:'/api/menus'
+        url:'/api/menus',
         method: "GET"
     });
 };
 
-export const fetchMenus = id => {
+export const fetchMenu = id => {
     return $.ajax({
         url:'/api/menus/${id}',
         method: "GET"
@@ -22,9 +22,9 @@ export const createMenus = menu => {
 };
 
 export const updateMenu = menu => {
-    return %.ajax({
+    return $.ajax({
         url:'/api/menus/${menu.id}',
-        method: "POST"
+        method: "POST",
         data: {menu}
     })
 };

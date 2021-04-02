@@ -1,7 +1,7 @@
-import {combinedReducers} from 'redux';
+import {combineReducers} from 'redux';
 import MenusReducer from './menus_reducer';
 
-const RootReducer = combinedReducers({
+const RootReducer = combineReducers({
     menus: MenusReducer
 });
 

@@ -36,14 +36,14 @@ export const fetchMenu = id => dispatch => {
 };
 export const createMenu = menu  => dispatch => {
     return MenuApiUtil.fetchMenu(menu)
-    .then(menu => dispatch(receiveMenu(createdPost())))
+    .then(menu => dispatch(receiveMenu(createdMenu())))
 };
 
 export const updateMenu = menu =>dispatch => {
-    return MenuApiUtil.createMenu(menu)
-    .then(updatedMenu => dispatch(receiveMenu(updatedPost())))
+    return MenuApiUtil.createMenus(menu)
+    .then(updatedMenu => dispatch(receiveMenu(updatedMenu())))
 };
 export const deleteMenu =id  => dispatch => {
-    return MenuApiUtil.deletePost(id)
-    .then(()) => dispatch(removeMenu(id)))
+    return MenuApiUtil.deleteMenu(id)
+    .then(() => dispatch(removeMenu(id)))
 };
