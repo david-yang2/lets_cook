@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: "static_pages#root"
+  # root to: "static_pages#root", as: :root
+  root to: redirect("/static_pages")
+  resources :static_pages, only: [:index]
   
   namespace :api, defaults: {format: :json} do
     resources :items, only: [:create, :show, :update, :destory]
