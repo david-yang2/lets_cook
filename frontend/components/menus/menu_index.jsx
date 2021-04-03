@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuIndexItem from './menu_index_item';
-//import CreateMenuFormContainer from './create_menu_form_container';
+import CreateMenuFormContainer from './create_menu_form_container';
 
 class MenuIndex extends React.Component{
     componentDidMount() {

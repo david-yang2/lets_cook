@@ -1,13 +1,13 @@
 export const fetchMenus = () => {
     return $.ajax({
-        url:'/api/menus',
+        url:`/api/menus`,
         method: "GET"
     });
 };
 
 export const fetchMenu = id => {
     return $.ajax({
-        url:'/api/menus/${id}',
+        url:`/api/menus/${id}`,
         method: "GET"
     });
 };
@@ -15,7 +15,7 @@ export const fetchMenu = id => {
 
 export const createMenus = menu => {
     return $.ajax({
-        url:'/api/menus',
+        url:`/api/menus`,
         method: "POST",
         data: {menu: menu}
     })
@@ -23,7 +23,7 @@ export const createMenus = menu => {
 
 export const updateMenu = menu => {
     return $.ajax({
-        url:'/api/menus/${menu.id}',
+        url:`/api/menus/${menu.id}`,
         method: "POST",
         data: {menu}
     })
@@ -31,7 +31,7 @@ export const updateMenu = menu => {
 
 export const deleteMenu = id => {
     return $.ajax({
-        url: '/api/menus/${menu.id}',
+        url: `/api/menus/${menu.id}`,
         method: "DESTROY"
     })
 };
