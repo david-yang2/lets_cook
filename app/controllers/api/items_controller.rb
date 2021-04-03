@@ -1,4 +1,4 @@
-class API::ItemsController < ApplicationController
+class Api::ItemsController < ApplicationController
 
   def index
     #dn /menu/:menu_id/items
@@ -13,7 +13,7 @@ class API::ItemsController < ApplicationController
   def show
 
 
-    render json: Item.find(self.params[:id])
+    render json: Item.find(params[:id])
   end
 
 
@@ -29,7 +29,7 @@ class API::ItemsController < ApplicationController
     #dn /items/:id
     item = Item.find(params[:id])
 
-    success = item.update(self.item_params)
+    success = item.update(item_params)
     if success
       render json: item
     else
@@ -39,7 +39,7 @@ class API::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(self.item_params)
+    @item = Item.new(item_params)
 
     #dn can do this because there's an association between them
       #dn can't do @menu = params[:menu_id] eventhough we are in /menus/:menu_id/items/new
@@ -67,7 +67,7 @@ class API::ItemsController < ApplicationController
 
   private
   def item_params
-    self.params[:item].permit(:menu_id, :name, :ingredients, :dish_type)
+    params.require(:item).permit(:menu_id, :name, :ingredients, :dish_type)
   end
 
 end

@@ -11,7 +11,7 @@ class Api::MenusController < ApplicationController
   end
 
   def create
-    @menu = Menu.new(self.menu_params)
+    @menu = Menu.new(menu_params)
 
     if @menu.save
       render :show
@@ -22,10 +22,10 @@ class Api::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    if @menu.update(self.menu_params)
+    if @menu.update(menu_params)
       render :show
     else
-      render json: @post.errors.full_messages, status: 422
+      render json: @menu.errors.full_messages, status: 422
     end
   end
 
@@ -34,13 +34,13 @@ class Api::MenusController < ApplicationController
     if @menu.destory
       render :show
     else 
-      render json: @post.errors.full_messages, status: 422
+      render json: @menu.errors.full_messages, status: 422
     end
   end
 
   private
   def menu_params
-    self.params.require[:menu].permit(:chefs_name, :location)
+    params.require(:menu).permit(:chefs_name, :location)
   end
 end
 
